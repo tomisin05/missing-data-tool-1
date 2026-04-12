@@ -7,14 +7,14 @@ interface BaseCardProps {
     minHeight?: string;
 }
 
-const BaseCard: React.FC<BaseCardProps> = ({ children, className = "", title, minHeight = "150px" }) => {
+const BaseCard: React.FC<BaseCardProps> = ({ children, className = "", title, minHeight = "140px" }) => {
     return (
         <div 
-            className={`rounded-2xl border bg-white shadow-sm flex flex-col items-center p-6 ${className}`}
+            className={`rounded-2xl bg-gray-100 flex flex-col items-center p-3 ${className}`}
             style={{ minHeight }}
         >
             {title && (
-                <div className="text-s text-gray-500 mb-2 text-center">
+                <div className="text-s mb-2 text-center">
                     {title}
                 </div>
             )}

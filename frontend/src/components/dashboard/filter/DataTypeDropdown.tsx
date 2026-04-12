@@ -26,12 +26,12 @@ const DataTypeDropdown: React.FC<DataTypeDropdownProps> = ({
         >
             <DropdownContent>
                 <DropdownItem
-                    label="N - Numerical"
+                    label="Numerical"
                     isSelected={currentType === 'N'}
                     onClick={() => onSelect('N')}
                 />
                 <DropdownItem
-                    label="C - Categorical"
+                    label="Categorical"
                     isSelected={currentType === 'C'}
                     onClick={() => onSelect('C')}
                 />

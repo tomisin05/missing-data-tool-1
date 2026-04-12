@@ -23,7 +23,7 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
     if (pagination.total === 0) return null;
 
     return (
-        <div className="flex items-center justify-between mt-6 pt-4 border-t mb-6">
+        <div className="flex items-center justify-between mt-5">
             <div className="text-sm text-gray-600">
                 Showing {pagination.page * pagination.limit + 1}-{Math.min((pagination.page + 1) * pagination.limit, pagination.total)} of {pagination.total} {itemName}
             </div>

@@ -98,10 +98,10 @@ const FirstQuestion: React.FC<FirstQuestionProps> = ({
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white">
             <div className="w-full max-w-4xl px-4 py-8">
-                <div className="mb-2 text-5xl font-semibold flex items-end">
+                <div className="mb-2 text-4xl font-semibold flex items-end">
                     <span>1</span>
                     <span className="text-gray-400">/3</span>
-                    <span className="text-base font-normal ml-4 text-gray-400">
+                    <span className="text-base font-normal ml-4 text-gray-500">
                         Just three questions to get started.
                     </span>
                 </div>
@@ -129,15 +129,15 @@ const FirstQuestion: React.FC<FirstQuestionProps> = ({
                             <span>No</span>
                         </label>
                     </div>
-                    <p className="text-gray-500 text-sm mt-2">
+                    <p className="mt-2 text-sm">
                         If you choose "no," feature names will automatically be
                         assigned. The first column will be named "Feature 1,"
                         the second column will be named "Feature 2," etc.
                     </p>
                 </div>
                 <div className="mb-6 mt-8">
-                    <div className="text-gray-500 text-sm mb-2">
-                        Dataset preview (first 10 rows)
+                    <div className="text-gray-600 text-sm mb-2">
+                        Dataset preview (first 10 rows, missing data highlighted in red)
                     </div>
                     <div className="overflow-x-auto border bg-white shadow max-w-fit">
                         {isLoadingPreview ? (
@@ -197,9 +197,6 @@ const FirstQuestion: React.FC<FirstQuestionProps> = ({
                         )}
                     </div>
                 </div>
-                <div className="text-xs text-red-500">
-                    Missing data is shown by red boxes.
-                </div>
                 <div className="flex justify-between mt-8">
                     <button
                         className={`${styles.button} ${styles.secondary}`}
@@ -207,7 +204,7 @@ const FirstQuestion: React.FC<FirstQuestionProps> = ({
                         disabled={isSubmitting}
                         style={{ minWidth: 80 }}
                     >
-                        ← Back
+                        Back
                     </button>
                     <button
                         className={`${styles.button} ${styles.primary} ml-2`}

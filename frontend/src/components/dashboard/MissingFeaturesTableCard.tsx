@@ -741,18 +741,18 @@ const MissingFeaturesTableCard: React.FC<MissingFeaturesTableCardProps> = ({
     });
 
     return (
-        <div className="rounded-2xl border bg-white shadow-sm p-6 w-full">
+        <div className="rounded-2xl bg-gray-100 p-6 w-full">
             {/* Header Section */}
-            <div className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <div className="font-semibold mb-4 flex items-center gap-2">
                 Features with missing data
             </div>
 
-            <div className="mb-4 text-sm text-gray-600">
+            <div className="mb-4 text-sm">
                 Data types are auto-detected. Please click to change if necessary.
             </div>
 
             {!hasTargetFeature && (
-                <div className="mb-4 text-sm text-gray-600">
+                <div className="mb-4 text-sm">
                     To gain insight into{" "}
                     <button
                         onClick={() => onInfoClick(
@@ -779,11 +779,11 @@ const MissingFeaturesTableCard: React.FC<MissingFeaturesTableCardProps> = ({
             ) : error ? (
                 <div className="text-center text-red-500 py-8">{error}</div>
             ) : (
-                <div ref={tableContainerRef} className="max-h-96 overflow-y-auto rounded-lg border">
+                <div ref={tableContainerRef} className="max-h-96 overflow-y-auto bg-white">
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm">
                             <thead className="sticky top-0 bg-white z-10 shadow-sm">
-                                <tr className="border-b-2 border-gray-300">
+                                <tr className="bg-white">
                                     <th className="text-center py-3 px-2 font-medium text-gray-700 border">
                                     <div className="flex items-center gap-1 justify-center">
                                         <ModalLink

@@ -198,13 +198,13 @@ export default function LandingPage() {
                     onClose={() => setErrorModal({ open: false, message: "" })}
                 />
             )}
-            <h1 className="text-4xl font-bold mb-2">The Missing Data Tool</h1>
-            <h2 className="text-lg text-gray-600 mb-8">
+            <h1 className="text-2xl font-bold mb-2">The missing data tool</h1>
+            <h2 className="text-lg mb-8">
                 Explore patterns of missing data and get actionable insights.
             </h2>
-            <div className="w-[90vw] max-w-xl h-[350px] sm:h-[450px] flex flex-col items-center justify-center mb-6 px-4">
+            <div className="w-[90vw] max-w-3xl h-[350px] sm:h-[450px] flex flex-col items-center justify-center mb-6 px-4">
                 <div
-                    className={`border-2 border-dashed rounded-3xl w-full h-full flex flex-col items-center justify-center transition-colors duration-200 ${
+                    className={`border-2 border-transparent rounded-3xl bg-gray-200 w-full h-full flex flex-col items-center justify-center transition-colors duration-200 ${
                         uploading ? "pointer-events-none opacity-60" : ""
                     }`}
                 >
@@ -215,10 +215,10 @@ export default function LandingPage() {
                         style={{ display: "none" }}
                         onChange={onFileChange}
                     />
-                    <h3 className="text-xl font-medium mb-2">
+                    <h3 className="text-lg mb-2">
                         Drag &amp; drop dataset here
                     </h3>
-                    <p className="mb-2 text-gray-700">or</p>
+                    <p className="mb-2 text-lg mb-2">or</p>
                     <button
                         type="button"
                         className={`${styles.button} ${styles.primary} text-lg font-semibold mb-2`}
@@ -228,14 +228,14 @@ export default function LandingPage() {
                     >
                         {uploading ? "Uploading..." : "Browse file"}
                     </button>
-                    <p className="text-sm text-gray-500 text-center">
+                    <p className="mt-2 text-center">
                         Supported formats: csv, xls, xlsx
                         <br />
                         File size limit: {MAX_SIZE_MB} MB
                     </p>
                 </div>
             </div>
-            <p className="text-sm text-gray-500 mt-2 text-center max-w-xl">
+            <p className="text-sm mt-2 text-center max-w-2xl">
                 Developers won't have access to your files. The analysis won't
                 be saved once you close the browser window.
             </p>

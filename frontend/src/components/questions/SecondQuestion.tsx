@@ -383,30 +383,29 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white">
             <div className="w-full max-w-4xl px-4 py-8">
-                <div className="mb-2 text-5xl font-semibold flex items-end">
+                <div className="mb-2 text-4xl font-semibold flex items-end">
                     <span>2</span>
                     <span className="text-gray-400">/3</span>
-                    <span className="text-base font-normal ml-4 text-gray-400">
+                    <span className="text-base font-normal ml-4 text-gray-500">
                         Just three questions to get started.
                     </span>
                 </div>
 
                 <div className="mb-6 mt-8">
-                    <p className="text-base font-medium mb-4">
+                    <p className="text-lg font-medium mb-4">
                         How is missing data represented in this dataset?
                     </p>
-
-                    <div className="text-sm mb-2">
+                    <div className="font-medium mb-2">
                         Apply to all features (you can select multiple answers):
                     </div>
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-1">
+                    <div className="flex flex-wrap items-start gap-x-4 gap-y-2 mb-1">
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input
                                 type="checkbox"
                                 checked={missingDataOptions.blanks}
                                 onChange={() => handleCheckbox("blanks")}
                             />
-                            <span className="text-sm">Blanks{detectedMissing?.blanks ? " (auto-detected)" : ""}</span>
+                            <span>Blanks{detectedMissing?.blanks ? " (auto-detected)" : ""}</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input
@@ -414,7 +413,7 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
                                 checked={missingDataOptions.na}
                                 onChange={() => handleCheckbox("na")}
                             />
-                            <span className="text-sm">N/A{detectedMissing?.na ? " (auto-detected)" : ""}</span>
+                            <span>N/A{detectedMissing?.na ? " (auto-detected)" : ""}</span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
                             <input
@@ -422,70 +421,78 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
                                 checked={missingDataOptions.other}
                                 onChange={() => handleCheckbox("other")}
                             />
-                            <span className="text-sm">Other:</span>
+                            <span>Other:</span>
                         </label>
+                        <div className="flex flex-col">
                         <input
                             type="text"
-                            className="border rounded px-2 py-1 text-sm min-w-[160px] italic"
+                            className="border rounded px-2 py-1 min-w-[160px] italic"
                             placeholder="please indicate"
                             value={missingDataOptions.otherText}
                             onChange={handleOtherText}
                             onBlur={handleOtherTextBlur}
                             disabled={!missingDataOptions.other}
                         />
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-gray-600">
                             (Separate by commas if more than one answer.)
                         </span>
+                        </div>
                     </div>
 
-                    <p className="text-sm text-black-600 mt-4 mb-3">
+                    <p className="text-black-600 text-sm mt-4 mb-3">
                         For example, if you select &ldquo;blanks&rdquo; above, all the blanks in the dataset will be recognized as missing data.
                     </p>
-                    <p className="text-sm text-black-600 mb-4">
+                    <p className="text-black-600 text-sm mb-4">
                         Sometimes, some features may have specific codes for representing missingness. For example, &ldquo;99&rdquo; might mean missing or unknown in one feature but be a valid value in other features. If that is the case, please specify the feature-specific codes of missingness below. If you are unsure whether your dataset has any feature-specific codes, please check your dataset&rsquo;s documentation.
                     </p>
 
-                    <div className="text-sm mb-2">
-                        Apply to specific features:
+                    <div className="font-medium mb-2">
+                        Apply to custom codes specific features:
                     </div>
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <select
-                            value={selectedFeature}
-                            onChange={(e) => setSelectedFeature(e.target.value)}
-                            className="border rounded px-3 py-2 text-sm min-w-[160px]"
-                        >
-                            <option value="">Select feature</option>
-                            {availableFeatures
-                                .filter(f => !featureSpecificOptions[f])
-                                .map(f => (
-                                    <option key={f} value={f}>{f}</option>
-                                ))
-                            }
-                        </select>
+
+                    <div className="flex flex-wrap items-start gap-2 mb-1">
+                    <select
+                        id="selectFeature"
+                        value={selectedFeature}
+                        onChange={(e) => setSelectedFeature(e.target.value)}
+                        className="border rounded px-2 py-1 min-w-[160px]"
+                    >
+                        <option value="">Select feature</option>
+                        {availableFeatures
+                            .filter(f => !featureSpecificOptions[f])
+                            .map(f => (
+                                <option key={f} value={f}>{f}</option>
+                            ))
+                        }
+                    </select>
+
+                    <div className="flex flex-col">
                         <input
                             type="text"
-                            className="border rounded px-2 py-2 text-sm min-w-[160px] italic"
+                            className="border rounded px-2 py-1 min-w-[160px] italic"
                             placeholder="please indicate"
                             value={specificFeatureText}
                             onChange={(e) => setSpecificFeatureText(e.target.value)}
                             onKeyDown={(e) => { if (e.key === "Enter") handleApplyFeatureSpecific(); }}
                         />
-                        <button
-                            onClick={handleApplyFeatureSpecific}
-                            disabled={!selectedFeature || !specificFeatureText.trim()}
-                            className="px-4 py-2 border border-gray-400 rounded text-sm hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
-                        >
-                            Apply
-                        </button>
+                        <div className="text-xs text-gray-600 mt-0.5">
+                            (Separate by commas if more than one answer.)
+                        </div>
                     </div>
-                    <div className="text-xs text-gray-500 mb-3">
-                        (Separate by commas if more than one answer.)
-                    </div>
+
+    <button
+        onClick={handleApplyFeatureSpecific}
+        disabled={!selectedFeature || !specificFeatureText.trim()}
+        className="px-4 py-2 border border-gray-400 rounded hover:bg-gray-100 disabled:opacity-80 disabled:cursor-not-allowed cursor-pointer"
+    >
+        Apply
+    </button>
+</div>
 
                     {Object.entries(featureSpecificOptions).length > 0 && (
                         <div className="mt-2 flex flex-col gap-1">
                             {Object.entries(featureSpecificOptions).map(([featureName, options]) => (
-                                <div key={featureName} className="flex items-center gap-3 text-sm">
+                                <div key={featureName} className="flex items-center gap-3">
                                     <span className="font-medium text-gray-700">{featureName}:</span>
                                     <span className="text-gray-600 italic">{options.otherText}</span>
                                     <input
@@ -508,8 +515,8 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
                 </div>
 
                 <div className="mb-6 mt-8">
-                    <div className="text-gray-500 text-sm mb-2">
-                        Dataset preview (first 10 rows)
+                    <div className="text-gray-600 text-sm mb-2">
+                        Dataset preview (first 10 rows, missing data highlighted in red)
                     </div>
                     <div className="overflow-x-auto border bg-white shadow max-w-fit">
                         {isLoadingPreview && isInitialPreviewLoad ? (
@@ -552,13 +559,10 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
                                 </tbody>
                             </table>
                         ) : (
-                            <div className="p-8 text-center text-gray-500">
+                            <div className="p-8 text-center text-gray-600">
                                 Failed to load dataset preview
                             </div>
                         )}
-                    </div>
-                    <div className="text-xs text-red-500 mt-1">
-                        Missing data is shown by red boxes.
                     </div>
                 </div>
 
@@ -569,7 +573,7 @@ const SecondQuestion: React.FC<SecondQuestionProps> = ({
                         disabled={isSubmitting}
                         style={{ minWidth: 80 }}
                     >
-                        &larr; Back
+                        Back
                     </button>
                     <button
                         className={`${styles.button} ${styles.primary} ml-2`}

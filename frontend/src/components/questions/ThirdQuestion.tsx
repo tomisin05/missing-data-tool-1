@@ -222,19 +222,20 @@ const ThirdQuestion: React.FC<ThirdQuestionProps> = ({
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white">
             <div className="w-full max-w-4xl px-4 py-8">
-                <div className="mb-2 text-5xl font-semibold flex items-end">
+                <div className="mb-2 text-4xl font-semibold flex items-end">
                     <span>3</span>
                     <span className="text-gray-400">/3</span>
-                    <span className="text-base font-normal ml-4 text-gray-400">
+                    <span className="text-base font-normal ml-4 text-gray-500">
                         Just three questions to get started.
                     </span>
                 </div>
                 <div className="mb-6 mt-8">
                     <label className="block text-lg font-medium mb-2">
-                        What is your target feature? If you are training machine
-                        learning models, your target feature is the feature you
-                        are trying to predict.
+                        What is your target feature?
                     </label>
+                    <div className="text-sm mb-4">
+                        If you are training machine learning models, your target feature is the feature you are trying to predict. If you don't know your target feature yet, you can skip this question.
+                    </div>
                     <div className="relative w-full max-w-xs" ref={dropdownRef}>
                         <button
                             type="button"
@@ -309,8 +310,8 @@ const ThirdQuestion: React.FC<ThirdQuestionProps> = ({
                     </div>
                 </div>
                 <div className="mb-6 mt-8">
-                    <div className="text-gray-500 text-sm mb-2">
-                        Dataset preview (first 10 rows)
+                    <div className="text-gray-600 text-sm mb-2">
+                        Dataset preview (first 10 rows, , missing data highlighted in red, target feature is italicized)
                     </div>
                     <div className="overflow-x-auto border bg-white shadow max-w-fit">
                         {isLoadingPreview ? (
@@ -374,10 +375,6 @@ const ThirdQuestion: React.FC<ThirdQuestionProps> = ({
                         )}
                     </div>
                 </div>
-                <div className="text-xs text-red-500">
-                    Missing data is shown by red boxes, target feature is
-                    italicized.
-                </div>
                 <div className="flex justify-between mt-8">
                     <button
                         className={`${styles.button} ${styles.secondary}`}
@@ -385,7 +382,7 @@ const ThirdQuestion: React.FC<ThirdQuestionProps> = ({
                         disabled={isSubmitting}
                         style={{ minWidth: 80 }}
                     >
-                        &larr; Back
+                        Back
                     </button>
                     <div className="flex gap-4">
                         <button

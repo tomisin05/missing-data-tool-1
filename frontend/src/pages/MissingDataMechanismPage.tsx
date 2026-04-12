@@ -55,12 +55,12 @@ const MissingDataMechanismPage: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-white">
             <div className="w-full max-w-4xl px-4 py-8">
-                <h1 className="text-2xl font-semibold mb-8 text-center">Missing data mechanism explanations</h1>
+                <h1 className="text-lg font-semibold mb-8 text-center">Missing data mechanism explanations</h1>
 
                 {/* Explanation of missing data mechanisms */}
-                <div className="bg-white rounded-2xl shadow-sm border p-4 mb-6">
+                <div className="rounded-2xl p-4 mb-6 bg-gray-100">
                     <div
-                        className="text-lg font-semibold mb-4 flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
+                        className="font-semibold flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
                         onClick={() => toggleSection('mechanisms')}
                     >
                         {expandedSections.mechanisms ? (
@@ -112,9 +112,9 @@ const MissingDataMechanismPage: React.FC = () => {
                 </div>
 
                 {/* Explanation of Little's MCAR test */}
-                <div className="bg-white rounded-2xl shadow-sm border p-4 mb-8">
+                <div className="bg-gray-100 rounded-2xl p-4 mb-8">
                     <div
-                        className="text-lg font-semibold mb-4 flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
+                        className="font-semibold flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
                         onClick={() => toggleSection('littleTest')}
                     >
                         {expandedSections.littleTest ? (
@@ -164,7 +164,7 @@ const MissingDataMechanismPage: React.FC = () => {
                         className={`${styles.button} ${styles.secondary}`}
                         style={{ minWidth: 120 }}
                     >
-                        ← Back
+                        Back
                     </button>
                 </div>
             </div>

@@ -805,10 +805,10 @@ const CompleteFeaturesTableCard: React.FC<CompleteFeaturesTableCardProps> = ({
 
     return (
         <div>
-        <div className="rounded-2xl border bg-white shadow-sm p-3 w-full">
+        <div className="rounded-2xl bg-gray-100 p-6 w-full">
             {/* Header Section */}
             <div
-                className="text-lg font-semibold mb-4 flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
+                className="font-semibold flex items-center gap-2 cursor-pointer hover:bg-gray-50 -m-2 p-2 rounded-lg transition-colors duration-200"
                 onClick={toggleExpanded}
             >
                 {isExpanded ? (
@@ -913,19 +913,18 @@ const CompleteFeaturesTableCard: React.FC<CompleteFeaturesTableCardProps> = ({
                     </div>
                 ) : (
                     <div>
-                        <div className="mb-4 text-sm text-gray-600">
+                        <div className="mb-4 mt-4 text-sm text-gray-600">
                             Data types are auto-detected. Please click to change if necessary.
                         </div>
                     
-                    <div ref={tableContainerRef} className="overflow-x-auto max-h-96 overflow-y-auto border rounded-lg">
+                    <div ref={tableContainerRef} className="justify-center items-center flex">
 
-                        
-                        <table className="w-full text-sm">
+                        <table className="text-sm bg-white">
                             {/* <thead className="sticky top-0 bg-white z-10 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-gray-700">
                                 <tr> */}
 
-                            <thead className="sticky top-0 bg-white z-10 shadow-sm">
-                                <tr className="border-b-2 border-gray-300">
+                            <thead className="sticky top-0 bg-white z-10">
+                                <tr className="border-b3">
                                     <th className="text-center py-3 px-2 font-medium text-gray-700 border">
                                         <div className="flex items-center gap-1 justify-center">
                                             <ModalLink

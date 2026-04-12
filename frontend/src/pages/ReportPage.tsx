@@ -2,8 +2,6 @@ import html2pdf from 'html2pdf.js';
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../config";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-// import DownloadIcon from "@mui/icons-material/Download";
 import styles from "../components/common/Button.module.css";
 
 interface ReportSection {
@@ -813,13 +811,30 @@ const handleDownloadPDF = async () => {
                 </span>
               </label>
             ))}
-            <p style={{ ...pageStyles.checkboxGroupLabel, margin: "0", fontWeight: "bold" }}>PDF preview</p>
           </div>
         </div>
+
+        <div style={pageStyles.footer}>
+        <button
+          onClick={() => navigate("/dashboard")}
+          className={`${styles.button} ${styles.secondary}`}
+
+        >
+          Back
+        </button>
+        <button
+          onClick={handleDownloadPDF}
+          className={`${styles.button} ${styles.primary}`}
+
+        >
+          Download
+        </button>
+      </div>
 
         {/* Bottom Panel - PDF Preview */}
         <div style={pageStyles.rightPanel}>
           <div style={{ marginBottom: "24px" }}></div>
+        <p style={{ ...pageStyles.checkboxGroupLabel, margin: "0", fontWeight: "bold" }}>PDF preview</p>
         <div style={pageStyles.previewBox}>
           <div ref={previewRef} style={pageStyles.previewArea}>
             {/* White "paper" document */}
@@ -844,24 +859,6 @@ const handleDownloadPDF = async () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <div style={pageStyles.footer}>
-        <button
-          onClick={() => navigate("/dashboard")}
-          className={`${styles.button} ${styles.secondary}`}
-          style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
-        >
-          <ArrowBackIcon style={{ fontSize: "16px" }} />
-          Back
-        </button>
-        <button 
-          onClick={handleDownloadPDF} 
-          className={`${styles.button} ${styles.primary}`}
-          style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
-        >
-          Download
-        </button>
-      </div>
     </div>
   );
 
@@ -955,16 +952,15 @@ const pageStyles: Record<string, React.CSSProperties> = {
     fontFamily: "'Segoe UI', system-ui, sans-serif",
     fontSize: "14px",
     color: "#111",
+    justifyContent: "center",
+    alignItems: "center",
   },
   titleBar: {
-    padding: "14px 20px",
-    borderBottom: "3px solid #d1d5db",
-    backgroundColor: "#fff",
+    margin: "2%"
   },
   titleText: {
     fontWeight: 600,
-    fontSize: "15px",
-    color: "#111",
+    fontSize: "15px"
   },
   body: {
     display: "flex",
@@ -975,14 +971,11 @@ const pageStyles: Record<string, React.CSSProperties> = {
   leftPanel: {
     width: "100%",
     flexShrink: 0,
-    borderBottom: "1px solid #d1d5db",
-    padding: "20px 24px",
-    backgroundColor: "#fff",
+    padding: "5px 24px",
   },
   checkboxGroupLabel: {
     fontWeight: 500,
     fontSize: "13px",
-    color: "#111",
     marginBottom: "12px",
     lineHeight: "1.4",
   },
@@ -996,12 +989,10 @@ const pageStyles: Record<string, React.CSSProperties> = {
     flex: 1,
     backgroundColor: "#e5e7eb",
     padding: "0 24px 24px 24px",
+    borderRadius: "6px",
   },
   previewBox: {
-  height: "800px",            
-  overflowY: "auto",
-  border: "1px solid #d1d5db",
-  borderRadius: "6px",
+  height: "auto",
   backgroundColor: "#e5e7eb", 
   padding: "24px",
   display: "flex",
@@ -1013,12 +1004,11 @@ const pageStyles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   footer: {
-    borderTop: "1px solid #d1d5db",
-    padding: "12px 20px",
+    padding: "15px 20px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#fff",
+    marginBottom: "1%",
   },
 };
 

@@ -57,10 +57,10 @@ const MechanismCard: React.FC = () => {
                         className="font-semibold text-xl mb-1"
                         onClick={() => navigate('/missing-data-mechanism')}
                     />
-                    <div className="text-xs text-gray-500 text-center">
+                    <div className="text-xs text-center">
                         {mechanism.mechanism_full}
                     </div>
-                    <div className="text-xs text-gray-400 text-center mt-1">
+                    <div className="text-xs text-center mt-1">
                         p-value: {mechanism.p_value.toExponential(2)}
                     </div>
                 </>

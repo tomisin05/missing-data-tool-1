@@ -36,7 +36,7 @@ const CaseCountCard: React.FC = () => {
             ) : error ? (
                 <div className="text-red-500 text-center">{error}</div>
             ) : (
-                <div className="text-2xl font-semibold mb-1 text-center">
+                <div className="text-xl font-semibold mb-1 text-center">
                     {missingCaseCount} ({missingPercent}%)
                 </div>
             )}

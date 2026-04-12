@@ -193,9 +193,9 @@ const RecommendationTableCard: React.FC<RecommendationTableCardProps> = () => {
     };
 
     return (
-        <div className="rounded-2xl border bg-white shadow-sm p-6 w-full">
+        <div className="rounded-2xl bg-gray-100 p-6 w-full">
             {/* Header Section */}
-            <div className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <div className="font-semibold mb-4 flex items-center gap-2">
                 Missing Data Treatment Recommendations
             </div>
 
@@ -270,21 +270,21 @@ const RecommendationTableCard: React.FC<RecommendationTableCardProps> = () => {
                 </div>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
+                    <table className="w-full text-sm bg-white">
                         <thead>
                             <tr className="border-b">
                                 <th className="text-center py-3 px-2 font-medium border">
-                                    <div className="text-xs sm:text-sm lg:text-base">
+                                    <div className="text-sm">
                                         Features with missing data
                                     </div>
                                 </th>
                                 <th className="text-center py-3 px-2 font-medium border">
-                                    <div className="text-xs sm:text-sm lg:text-base">
+                                    <div className="text-sm">
                                         Recommended missing data treatment
                                     </div>
                                 </th>
                                 <th className="text-center py-3 px-2 font-medium border">
-                                    <div className="text-xs sm:text-sm lg:text-base">
+                                    <div className="text-sm">
                                         Reasons
                                     </div>
                                 </th>
